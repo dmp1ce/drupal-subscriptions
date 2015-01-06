@@ -1,0 +1,37 @@
+php:
+  build: containers/php
+  command: /opt/start_php_fpm.sh
+  volumes:
+    - drupal:/srv/http/drupal
+    - modules:/srv/http/modules
+    - libraries:/srv/http/libraries
+    - themes:/srv/http/themes
+    - log:/log
+  links:
+    - db
+nginx: 
+  build: containers/nginx
+  links:
+    - php
+  volumes:
+    - ssl:/usr/local/ssl
+    - log:/log
+    - drupal:/srv/http/drupal
+    - modules:/srv/http/modules
+    - libraries:/srv/http/libraries
+    - themes:/srv/http/themes
+  command: /start_nginx.sh
+  ports:
+    - "80:80"
+    - "443:443"
+db:
+  build: containers/mysql
+#compass:
+#  build: containers/compass
+#  command: compass watch --poll /data/freetalklive_theme
+#  volumes:
+#    - themes/freetalklive:/data/freetalklive_theme
+#postfix:
+#  image: previousnext/postfix
+
+# vi: set tabstop=2 expandtab :
