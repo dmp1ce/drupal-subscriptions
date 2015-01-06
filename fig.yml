@@ -3,9 +3,10 @@ php:
   command: /opt/start_php_fpm.sh
   volumes:
     - drupal:/srv/http/drupal
-    - modules:/srv/http/modules
-    - libraries:/srv/http/libraries
-    - themes:/srv/http/themes
+    - modules:/srv/http/drupal/sites/all/modules
+    - libraries:/srv/http/drupal/sites/all/libraries
+    - themes:/srv/http/drupal/sites/all/themes
+    - drupal-default:/srv/http/drupal/sites/default
     - log:/log
   links:
     - db
@@ -17,9 +18,10 @@ nginx:
     - ssl:/usr/local/ssl
     - log:/log
     - drupal:/srv/http/drupal
-    - modules:/srv/http/modules
-    - libraries:/srv/http/libraries
-    - themes:/srv/http/themes
+    - modules:/srv/http/drupal/sites/all/modules
+    - libraries:/srv/http/drupal/sites/all/libraries
+    - themes:/srv/http/drupal/sites/all/themes
+    - drupal-default:/srv/http/drupal/sites/default
   command: /start_nginx.sh
   ports:
     - "80:80"
