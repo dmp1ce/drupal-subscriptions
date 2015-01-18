@@ -7,3 +7,9 @@
 [submodule "modules/commerce_license_billing"]
 	path = modules/commerce_license_billing
 	url = http://git.drupal.org/project/commerce_license_billing.git
+[submodule "commerce_authnet"]
+	path = commerce_authnet
+	url = http://git.drupal.org/project/commerce_authnet.git
+[submodule "modules/commerce_authnet"]
+	path = modules/commerce_authnet
+	url = http://git.drupal.org/project/commerce_authnet.git
