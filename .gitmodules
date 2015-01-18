@@ -1,3 +1,9 @@
 [submodule "drupal"]
 	path = drupal
 	url = http://git.drupal.org/project/drupal.git
+[submodule "modules/commerce_license"]
+	path = modules/commerce_license
+	url = http://git.drupal.org/project/commerce_license.git
+[submodule "modules/commerce_license_billing"]
+	path = modules/commerce_license_billing
+	url = http://git.drupal.org/project/commerce_license_billing.git
