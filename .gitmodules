@@ -13,3 +13,6 @@
 [submodule "modules/commerce_authnet"]
 	path = modules/commerce_authnet
 	url = http://git.drupal.org/project/commerce_authnet.git
+[submodule "modules/commerce_license_billing_credit_card"]
+	path = modules/commerce_license_billing_credit_card
+	url = http://git.drupal.org/sandbox/daveparrish/2413455.git
