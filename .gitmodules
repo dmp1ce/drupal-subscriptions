@@ -16,3 +16,6 @@
 [submodule "modules/commerce_license_billing_credit_card"]
 	path = modules/commerce_license_billing_credit_card
 	url = http://git.drupal.org/sandbox/daveparrish/2413455.git
+[submodule "modules/commerce_paypal"]
+	path = modules/commerce_paypal
+	url = http://git.drupal.org/project/commerce_paypal.git
