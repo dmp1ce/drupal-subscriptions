@@ -19,3 +19,6 @@
 [submodule "modules/commerce_paypal"]
 	path = modules/commerce_paypal
 	url = http://git.drupal.org/project/commerce_paypal.git
+[submodule "modules/commerce"]
+	path = modules/commerce
+	url = http://git.drupal.org/project/commerce.git
