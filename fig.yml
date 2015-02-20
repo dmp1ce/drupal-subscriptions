@@ -8,6 +8,7 @@ php:
     - themes:/srv/http/drupal/sites/all/themes
     - drupal-default:/srv/http/drupal/sites/default
     - log:/log
+    - tmp:/tmp
   links:
     - db
 nginx: 
