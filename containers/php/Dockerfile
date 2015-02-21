@@ -1,13 +1,14 @@
 FROM base/archlinux
 MAINTAINER David Parrish <daveparrish@gmail.com>
 
-# Full system update.
-RUN pacman -Syu --noconfirm --ignore filesystem \
-    >/dev/null 2>/dev/null
+# Update mirrors and all packages
+ADD mirrorlist /etc/pacman.d/mirrorlist.new
+RUN rankmirrors -n 6 /etc/pacman.d/mirrorlist.new > /etc/pacman.d/mirrorlist \
+&& pacman -Syuq --noconfirm && pacman-db-upgrade
 
 # Install PHP
 RUN pacman -Syq --noconfirm --needed php-fpm php-sqlite php-gd \
-    >/dev/null 2>/dev/null
+>/dev/null 2>/dev/null
 
 # Configure PHP
 RUN sed -i 's/;extension=pdo_mysql.so/extension=pdo_mysql.so/g' /etc/php/php.ini
@@ -25,10 +26,10 @@ listen = 0.0.0.0:9000' /etc/php/php-fpm.conf
 # mariadb required for "drush sqlc"
 RUN pacman -Syq --needed --noconfirm base-devel git jshon mariadb \
     >/dev/null 2>/dev/null
-# Get Packer to help with installing from AUR
-RUN git clone https://github.com/keenerd/packer.git /opt/packer
-RUN chmod +x /opt/packer/packer
-RUN /opt/packer/packer -S --noedit --noconfirm drush
+# Get AUR helper to install drush
+RUN git clone https://github.com/oshazard/apacman /opt/apacman \
+&& chmod +x /opt/apacman/apacman \
+&& /opt/apacman/apacman -S --noedit --noconfirm drush
 # Set HOME and open_basedir so that drush doesn't complain
 ENV HOME /root
 RUN mkdir /root/.drush
