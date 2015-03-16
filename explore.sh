@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fig run --rm php /bin/bash
+docker-compose run --rm php /bin/bash
